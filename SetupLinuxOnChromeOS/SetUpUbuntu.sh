@@ -31,7 +31,7 @@ rm -f packages.microsoft.gpg
 sudo apt update
 
 # for development
-sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git gh \
+sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh \
 wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
 gpg apt-transport-https vlc filezilla openjdk-21-jdk ./google-chrome-stable*
 
