@@ -5,7 +5,8 @@ sudo shutdown -r now
 sudo flatpak install flathub com.github.dail8859.NotepadNext
 
 sudo apt install wget curl ssh -y
-sudo snap remove firefox thunderbird
+sudo snap remove --purge firefox 
+sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*' 'libreoffice*'
 sudo apt-get autoremove
 sudo apt-get clean
