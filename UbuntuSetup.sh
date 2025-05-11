@@ -7,7 +7,7 @@ sudo flatpak install flathub com.github.dail8859.NotepadNext
 sudo apt install wget curl ssh -y
 sudo snap remove --purge firefox 
 sudo snap remove --purge thunderbird
-sudo apt-get remove --purge 'thunderbird*' 'libreoffice*'
+sudo apt-get remove --purge 'thunderbird*' 'firefox*'
 sudo apt-get autoremove
 sudo apt-get clean
 #https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22
