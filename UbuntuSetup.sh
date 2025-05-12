@@ -59,9 +59,9 @@ sudo apt install -y ./google-chrome-stable_current_amd64.deb; sudo apt update
 
 #Chrome Remote Desktop
 sudo adduser crdp
-cd /home/crdp
 sudo usermod -aG sudo crdp
-sudo su crdp
+su crdp
+cd /home/crdp
 echo "deb [arch=amd64] https://dl.google.com/linux/chrome-remote-desktop/deb stable main" \
     | sudo tee /etc/apt/sources.list.d/chrome-remote-desktop.list
 sudo apt-get update
