@@ -48,6 +48,7 @@ jupyter labextension install jupyter-matplotlib
 
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
+sudo ls
 wget https://github.com/spyder-ide/spyder/releases/latest/download/Spyder-Linux-x86_64.sh && sudo sh Spyder-Linux-x86_64.sh
 
 sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgrade -y && sudo apt autoremove -y
