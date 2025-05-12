@@ -33,11 +33,17 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
 sudo sh Anaconda3*
 #once done perform below
 sudo chown -R $USER:$USER /opt/anaconda3
-
 #in ~./profile:
 #if [ -d "/opt/anaconda3/bin" ] ; then
 #    PATH="/opt/anaconda3/bin:$PATH"
 #fi
+source .profile
+conda update conda && conda update --all
+pip install prospector setuptools
+conda install -c conda-forge ipympl
+conda install nodejs
+jupyter labextension install @jupyter-widgets/jupyterlab-manager 
+jupyter labextension install jupyter-matplotlib
 
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
