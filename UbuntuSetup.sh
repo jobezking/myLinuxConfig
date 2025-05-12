@@ -1,13 +1,58 @@
-sudo apt install flatpak -y
-sudo apt install gnome-software-plugin-flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo shutdown -r now
-sudo flatpak install flathub com.github.dail8859.NotepadNext
-
-sudo apt install wget curl ssh -y
-sudo snap remove --purge firefox 
+sudo apt install wget curl ssh -y gnupg software-properties-common
 sudo snap remove --purge thunderbird
-sudo apt-get remove --purge 'thunderbird*' 'firefox*'
+sudo apt-get remove --purge 'thunderbird*'
+sudo apt-get autoremove
+sudo apt-get clean
+
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
+sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
+#Terraform repo
+sudo ls
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+#Microsoft Visual Studio repo
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+sudo apt update
+
+# for development
+sudo snap install pycharm-community --classic
+sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh terraform \
+wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
+gpg apt-transport-https vlc filezilla openjdk-21-jdk netbeans
+
+# To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
+# To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
+wget https://github.com/spyder-ide/spyder/releases/latest/download/Spyder-Linux-x86_64.sh && sudo sh Spyder-Linux-x86_64.sh
+
+sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgrade -y && sudo apt autoremove -y
+
+#Google Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb; sudo apt update
+
+#Chrome Remote Desktop
+sudo adduser crdp
+cd /home/crdp
+sudo usermod -aG sudo crdp
+sudo su crdp
+echo "deb [arch=amd64] https://dl.google.com/linux/chrome-remote-desktop/deb stable main" \
+    | sudo tee /etc/apt/sources.list.d/chrome-remote-desktop.list
+sudo apt-get update
+sudo apt install -y chrome-remote-desktop
+#On another host using Chrome browser signed into account that you wish to use, access https://remotedesktop.google.com/headless
+#and follow instructions
+sudo systemctl | grep chrome-remote-desktop    #to see if service is running
+
+#Replace Firefox Snap with repo version
+sudo snap remove --purge firefox
+sudo apt-get remove --purge 'firefox*'
 sudo apt-get autoremove
 sudo apt-get clean
 #https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22
@@ -22,37 +67,10 @@ Pin: origin packages.mozilla.org
 Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 sudo apt-get update && sudo apt-get install firefox
-sudo snap install pycharm-community --classic
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
-sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -    #Terraform
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  #Microsoft Visual Studio code repo
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-rm -f packages.microsoft.gpg
-sudo apt update
 
-# for development
-sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh terraform \
-wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
-gpg apt-transport-https vlc filezilla openjdk-21-jdk netbeans ./google-chrome-stable*
-
-# To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
-# To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
-wget https://github.com/spyder-ide/spyder/releases/latest/download/Spyder-Linux-x86_64.sh && sudo sh Spyder-Linux-x86_64.sh
-
-sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgrade -y && sudo apt autoremove -y
-
-#Chrome Remote Desktop
-sudo adduser crdpcd /home/crdp
-sudo usermod -aG sudo crdp
-sudo su crdp
-echo "deb [arch=amd64] https://dl.google.com/linux/chrome-remote-desktop/deb stable main" \
-    | sudo tee /etc/apt/sources.list.d/chrome-remote-desktop.list
-sudo apt-get update
-sudo apt install -y chrome-remote-desktop
-#On another host using Chrome browser signed into account that you wish to use, access https://remotedesktop.google.com/headless
-#and follow instructions
-sudo systemctl | grep chrome-remote-desktop    #to see if service is running
+#Notepad++ Linux version
+sudo apt install flatpak -y
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo shutdown -r now
+sudo flatpak install flathub com.github.dail8859.NotepadNext
