@@ -62,6 +62,7 @@ sudo adduser crdp
 sudo usermod -aG sudo crdp
 su crdp
 cd /home/crdp
+sudo ls
 echo "deb [arch=amd64] https://dl.google.com/linux/chrome-remote-desktop/deb stable main" \
     | sudo tee /etc/apt/sources.list.d/chrome-remote-desktop.list
 sudo apt-get update
