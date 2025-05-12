@@ -24,6 +24,7 @@ Pin-Priority: 1000
 sudo apt-get update && sudo apt-get install firefox
 sudo snap install pycharm-community --classic
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -    #Terraform
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
@@ -36,7 +37,7 @@ sudo apt update
 # for development
 sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh terraform \
 wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
-gpg apt-transport-https vlc filezilla openjdk-21-jdk ./google-chrome-stable*
+gpg apt-transport-https vlc filezilla openjdk-21-jdk netbeans ./google-chrome-stable*
 
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
