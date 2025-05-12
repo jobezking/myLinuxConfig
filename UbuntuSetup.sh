@@ -39,6 +39,7 @@ sudo chown -R $USER:$USER /opt/anaconda3
 #fi
 source .profile
 conda update conda && conda update --all
+conda init
 pip install prospector setuptools
 conda install -c conda-forge ipympl
 conda install nodejs
