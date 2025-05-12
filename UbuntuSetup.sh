@@ -86,6 +86,25 @@ Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 sudo apt-get update && sudo apt-get install firefox
 
+#How to use LVM to add USBs, sdcards etc.
+
+#Use diskparted etc. to format all disks
+#Only insert the primary disk. Install Ubuntu 24 or higher using advanced LVM option. This will create an LVM volume using the boot disk.
+#Insert all other disks. Format them as ext4 (internal Linux disk only) but do not mount them.
+#Use sudo lvmdiskscan to verify that primary and other disks are recognized by LVM
+#Use sudo pvs to see all lvm2 physical volumes, which at this point should be only the boot disk.
+#Use sudo pvcreate device1 device 2 etc. for all the other disks that you wish to join with the boot disk (do not include boot disk) i.e. sudo pvcreate /dev/sdb /dev/mmcblk0p1
+#Use sudo vgextend volgrp dev1 dev2 etc to add the new disks to the volume group i.e. sudo vgextend ubuntu-vg /dev/mmcblk0p1 /dev/sdb
+#Now extend the logical volume to include all the space on the new disk. This will require identifying and using the filesystem name, not the group name so to obtain it run sudo df -h /home, sudo df -h /opt or similar. Get /dev/mapper/… result under Filesystem
+#Expand logical volume to all available space in volume group with: sudo lvextend -l +100%FREE /dev/mapper/vg_cloud-LogVol00
+#Use resizefs command to make it take effect: sudo resize2fs /dev/mapper/vg_cloud-LogVol0
+#sudo lvextend -l +100%FREE /dev/mapper/vg_cloud-LogVol00 combines 9 and 10
+
+References:
+https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations 
+https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-18-04 
+https://www.linuxtechi.com/extend-lvm-partitions/ 
+
 #Notepad++ Linux version
 sudo apt install flatpak -y
 sudo apt install gnome-software-plugin-flatpak
