@@ -69,7 +69,7 @@ sudo apt-get update
 sudo apt install -y chrome-remote-desktop
 #On another host using Chrome browser signed into account that you wish to use, access https://remotedesktop.google.com/headless
 #and follow instructions
-sudo systemctl | grep chrome-remote-desktop    #to see if service is running
+sudo systemctl status chrome-remote-desktop@$USER    #to see if service is running
 
 #Replace Firefox Snap with repo version
 sudo snap remove --purge firefox
