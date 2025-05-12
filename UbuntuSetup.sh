@@ -57,7 +57,7 @@ sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgra
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb; sudo apt update
 
-#Chrome Remote Desktop
+#Chrome Remote Desktop. To avoid session conflicts, create a dedicated account. Do not configure Chrome Remote Desktop in a user account
 sudo adduser crdp
 sudo usermod -aG sudo crdp
 su crdp
@@ -70,6 +70,7 @@ sudo apt install -y chrome-remote-desktop
 #On another host using Chrome browser signed into account that you wish to use, access https://remotedesktop.google.com/headless
 #and follow instructions
 sudo systemctl status chrome-remote-desktop@$USER    #to see if service is running
+#when logging in for the first time, DO NOT use the Default X Session. Pick the Ubuntu session.
 
 #Replace Firefox Snap with repo version
 sudo snap remove --purge firefox
