@@ -44,3 +44,15 @@ gpg apt-transport-https vlc filezilla openjdk-21-jdk netbeans ./google-chrome-st
 wget https://github.com/spyder-ide/spyder/releases/latest/download/Spyder-Linux-x86_64.sh && sudo sh Spyder-Linux-x86_64.sh
 
 sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgrade -y && sudo apt autoremove -y
+
+#Chrome Remote Desktop
+sudo adduser crdpcd /home/crdp
+sudo usermod -aG sudo crdp
+sudo su crdp
+echo "deb [arch=amd64] https://dl.google.com/linux/chrome-remote-desktop/deb stable main" \
+    | sudo tee /etc/apt/sources.list.d/chrome-remote-desktop.list
+sudo apt-get update
+sudo apt install -y chrome-remote-desktop
+#On another host using Chrome browser signed into account that you wish to use, access https://remotedesktop.google.com/headless
+#and follow instructions
+sudo systemctl | grep chrome-remote-desktop    #to see if service is running
