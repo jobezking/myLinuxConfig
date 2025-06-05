@@ -25,7 +25,7 @@ https://linuxize.com/post/how-to-install-and-configure-gitlab-on-ubuntu-18-04/
 14. sudo cat /etc/gitlab/initial_root_password
 15. Visit https://git-ubuntu.bosgame.pve.lan
 16. Edit Profile > User Settings > Password
-17. Account > change username from root to jeking
+17. Account > change username from root to username
 
 
 Adding SSH keys
