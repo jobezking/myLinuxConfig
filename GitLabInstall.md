@@ -1,8 +1,4 @@
-GitLab  
-[https://www.letscloud.io/community/how-to-install-and-configure-gitlab-on-ubuntu-20-04](https://www.letscloud.io/community/how-to-install-and-configure-gitlab-on-ubuntu-20-04)  
-[https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-gitlab-on-ubuntu)  
-[https://www.linuxtechi.com/how-to-install-gitlab-on-ubuntu/](https://www.linuxtechi.com/how-to-install-gitlab-on-ubuntu/)  
-[https://linuxize.com/post/how-to-install-and-configure-gitlab-on-ubuntu-18-04/](https://linuxize.com/post/how-to-install-and-configure-gitlab-on-ubuntu-18-04/)
+GitLab Installation On Ubuntu
 
 1. sudo apt update && sudo apt upgrade \-y  
 2. sudo debconf-set-selections \<\<\< "postfix postfix/mailname string $(hostname \-f)"  
@@ -24,7 +20,7 @@ GitLab
 14. sudo cat /etc/gitlab/initial\_root\_password  
 15. Visit [https://git-ubuntu.bosgame.pve.lan](http://git-ubuntu.bosgame.pve.lan)  
 16. Edit Profile \> User Settings \> Password  
-17. Account \> change username from root to jeking
+17. Account \> change username from root to username
 
 Adding SSH keys
 
