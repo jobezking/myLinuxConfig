@@ -11,7 +11,7 @@ https://linuxize.com/post/how-to-install-and-configure-gitlab-on-ubuntu-18-04/
 4. sudo apt install ca-certificates curl openssh-server postfix tzdata perl -y
 5. On Postfix configuration screen choose “Internet Site”
 6. curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-7. sudo EXTERNAL_URL="https://git-ubuntu.bosgame.pve.lan" apt install gitlab-ce -y
+7. sudo EXTERNAL_URL="https://gitlab.0.bosgame.pve.lan.com" apt install gitlab-ce -y
 8. sudo ufw allow http && sudo ufw allow https && sudo ufw allow OpenSSH
 9. sudo vim /etc/gitlab/gitlab.rb > update gitlab_rails['backup_path'] = '/opt/gitlab_backups'
    1. letsencrypt['enable'] = true
