@@ -11,13 +11,15 @@ https://linuxize.com/post/how-to-install-and-configure-gitlab-on-ubuntu-18-04/
 4. sudo apt install ca-certificates curl openssh-server postfix tzdata perl -y
 5. On Postfix configuration screen choose “Internet Site”
 6. curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-7. sudo EXTERNAL_URL="https://gitlab.0.bosgame.pve.lan.com" apt install gitlab-ce -y
+7. sudo EXTERNAL_URL="http://GITLABHOSTNAME" apt install gitlab-ce -y
 8. sudo ufw allow http && sudo ufw allow https && sudo ufw allow OpenSSH
+8. sudo mkdir /etc/gitlab/ssl
+8. sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/gitlab/ssl/GITLABHOSTNAME.key -out /etc/gitlab/ssl/GITLABHOSTNAME.crt
 9. sudo vim /etc/gitlab/gitlab.rb > update gitlab_rails['backup_path'] = '/opt/gitlab_backups'
-   1. letsencrypt['enable'] = true
-   2. letsencrypt['auto_renew'] = true
-   3. letsencrypt['auto_renew_hour'] = 5
-   4. letsencrypt['auto_renew_day_of_month'] = "*/6"
+   1. letsencrypt['enable'] = false
+   2. nginx['ssl_certificate'] = "/etc/gitlab/ssl/GITLABHOSTNAME.crt"
+   3. nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/GITLABHOSTNAME.key"
+   4. external_url 'https://GITLABHOSTNAME'
 10. sudo gitlab-ctl reconfigure
 11. sudo gitlab-rake gitlab:check
 12. crontab -e
