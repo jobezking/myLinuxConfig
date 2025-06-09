@@ -12,3 +12,4 @@ su - ${USER}
 # Docker compose
 sudo apt-get install docker-compose-plugin -y
 docker compose version
+#Jenkins https://github.com/vdespa/install-jenkins-docker
