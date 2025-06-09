@@ -13,3 +13,9 @@ su - ${USER}
 sudo apt-get install docker-compose-plugin -y
 docker compose version
 #Jenkins https://github.com/vdespa/install-jenkins-docker
+git clone https://github.com/vdespa/install-jenkins-docker.git
+cd install-jenkins-docker
+docker build -t my-jenkins .
+docker compose up -d
+docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+# could have also used docker exec -it my-jenkins sh; cat /var/jenkins_home/secrets/initialAdminPassword; exit
