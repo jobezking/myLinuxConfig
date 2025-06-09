@@ -21,3 +21,4 @@ docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 #access http://hostname:8080 and provide password obtained above or below
 # could have also used docker exec -it my-jenkins sh; cat /var/jenkins_home/secrets/initialAdminPassword; exit
 docker compose down  #stops all containers including Jenkins
+docker compose down --volumes --rmi all # deletes all containers including Jenkins
