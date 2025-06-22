@@ -1,7 +1,6 @@
 cd $HOME/.ssh
 rm id_rsa*
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f $HOME/.ssh/id_rsa
-#press enter for no password
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f $HOME/.ssh/id_rsa -q -P ""
 cat id_rsa.pub
 #copy contents, go to https://github.com/settings/keys and press New SSH key and paste
 ssh -vT git@github.com
