@@ -1,7 +1,7 @@
 cd $HOME/.ssh
 rm id_rsa*
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f $HOME/.ssh/id_rsa -q -P ""
-cat id_rsa.pub
+ssh-keygen -t ed25519 -C "your_email@example.com" -f $HOME/.ssh/id_ed25519 -q -P ""
+cat id_ed25519.pub
 #copy contents, go to https://github.com/settings/keys and press New SSH key and paste
 ssh -vT git@github.com
 # if it works then cd to location where github repository was locally cloned
