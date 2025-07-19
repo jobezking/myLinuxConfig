@@ -24,6 +24,7 @@ rm -f packages.microsoft.gpg
 sudo apt update
 
 # for development
+sudo snap install termius-app
 sudo snap install pycharm-community --classic
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh terraform \
