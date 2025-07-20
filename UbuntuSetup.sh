@@ -1,4 +1,4 @@
-sudo apt install wget curl ssh -y gnupg software-properties-common libfuse2
+sudo apt install wget curl ssh -y gnupg software-properties-common libfuse2 gftp
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
 sudo apt-get autoremove
