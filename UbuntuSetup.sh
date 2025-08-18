@@ -31,6 +31,9 @@ sudo apt install -y software-properties-common  ca-certificates gnupg lsb-releas
 wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
 gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go ./gitkraken-amd64.deb
 
+#Nvidia only
+sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
+
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
 curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
     #after running command below, choose /opt/anaconda3 as target directory
