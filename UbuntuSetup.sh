@@ -33,6 +33,7 @@ gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go
 
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
+# ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf "scale_cuda=1920:1080" -c:v h264_nvenc -preset fast -b:v 8M -c:a copy output.mp4
 
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
 curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
