@@ -1,4 +1,4 @@
-sudo apt install wget curl ssh -y gnupg software-properties-common libfuse2 gftp tmux
+sudo apt install -y wget curl ssh gnupg software-properties-common libfuse2 gftp tmux
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
 sudo apt-get autoremove
