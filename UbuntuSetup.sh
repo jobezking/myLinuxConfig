@@ -1,7 +1,7 @@
 sudo apt install -y wget curl ssh gnupg software-properties-common libfuse2 gftp tmux
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
-sudo apt-get autoremove
+sudo apt-get autoremove -y
 sudo apt-get clean
 #Intellij
 #https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
@@ -27,9 +27,9 @@ sudo apt update
 sudo snap install termius-app
 #sudo snap install pycharm-community --classic
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh konsole terraform \
-wget nano vim gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
-gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go ./gitkraken-amd64.deb
+sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh konsole wget nano vim \
+gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
+gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go terraform ./gitkraken-amd64.deb
 
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
@@ -45,10 +45,10 @@ sudo chown -R $USER:$USER /opt/anaconda3
 #if [ -d "/opt/anaconda3/bin" ] ; then
 #    PATH="/opt/anaconda3/bin:$PATH"
 #fi
-source .profile
+cd $HOME; source .profile; source .bashrc
 conda update conda && conda update --all
 conda init
-pip install prospector setuptools
+pip3 install prospector setuptools
 conda install -c conda-forge ipympl
 conda install nodejs
 jupyter labextension install @jupyter-widgets/jupyterlab-manager 
