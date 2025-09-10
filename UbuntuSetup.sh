@@ -8,7 +8,9 @@ sudo apt-get clean
 #
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
-
+## Get Github desktop fork repo from shiftkey
+wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
 #Microsoft Visual Studio repo
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -22,7 +24,7 @@ sudo snap install termius-app
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh konsole wget nano vim \
 gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
-gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go ./gitkraken-amd64.deb
+gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go github-desktop ./gitkraken-amd64.deb
 
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
