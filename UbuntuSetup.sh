@@ -1,10 +1,21 @@
-sudo apt install -y wget curl ssh gnupg software-properties-common libfuse2 gftp tmux
+sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release  
+# Remove Thunderbird
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
 sudo apt-get autoremove -y
 sudo apt-get clean
+# Add repos for Docker CE
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
 #Intellij
 #https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
+cd $HOME/Downloads
+wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.28.43.tar.gz
+tar -xvzf jetbrains-toolbox-*.tar.gz
+cd jetbrains-toolbox-* #will need to do auto-complete or ls to get exact directory name
+cd bin
+./jetbrains-toolbox 
 #
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
@@ -21,9 +32,10 @@ sudo apt update
 sudo snap install termius-app
 #sudo snap install pycharm-community --classic
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install -y software-properties-common  ca-certificates gnupg lsb-release code git-all gh konsole wget nano vim \
-gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev net-tools python3-venv software-properties-common \
-gpg apt-transport-https vlc filezilla default-jdk default-jre netbeans golang-go github-desktop ./gitkraken-amd64.deb ./GitHubDesktop-linux-*
+sudo apt install -y code git-all gh konsole wget nano vim \
+gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev \
+net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
+vlc filezilla default-jdk default-jre netbeans golang-go github-desktop ./gitkraken-amd64.deb ./GitHubDesktop-linux-*
 
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
