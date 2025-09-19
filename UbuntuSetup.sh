@@ -35,7 +35,7 @@ sudo apt update
 sudo snap install termius-app
 #sudo snap install pycharm-community --classic
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo apt install -y code git-all gh konsole wget nano vim \
+sudo apt install -y code git-all gh konsole wget nano vim gnome-boxes\
 gnome-console gnome-text-editor python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev \
 net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
 vlc filezilla default-jdk default-jre netbeans golang-go github-desktop ./gitkraken-amd64.deb ./GitHubDesktop-linux-*
