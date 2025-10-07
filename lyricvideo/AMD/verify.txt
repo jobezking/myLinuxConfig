@@ -1,0 +1,17 @@
+sudo apt update
+sudo apt install -y rocm-dev rocminfo rocm-libs hip-runtime-amd mesa-opencl-icd ocl-icd-opencl-dev
+sudo usermod -aG video $USER
+sudo usermod -aG render $USER
+# log out and back in
+rocminfo   # should list your GPU (gfx103x for RDNA2)
+
+python3 -m venv ~/venvs/rocm
+source ~/venvs/rocm/bin/activate
+pip install --upgrade pip wheel setuptools
+pip install moviepy==1.0.3 pillow numpy
+pip install cupy-rocm-6-0   # or cupy-rocm-5-7 if 6.0 not available
+
+vainfo
+ffmpeg -hide_banner -encoders | grep vaapi
+
+
