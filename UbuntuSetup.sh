@@ -55,8 +55,9 @@ if [ -d "/opt/anaconda3/bin" ] ; then
     PATH="/opt/anaconda3/bin:$PATH"
 fi
 cd $HOME; source .profile; source .bashrc
+sudo shutdown -r now
+conda update -n base -c defaults conda
 conda update conda && conda update --all
-conda init
 pip3 install prospector setuptools
 conda install -c conda-forge ipympl
 conda install nodejs
