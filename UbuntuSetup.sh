@@ -51,9 +51,9 @@ sudo sh Anaconda3*
 #once done perform below
 sudo chown -R $USER:$USER /opt/anaconda3
 #in ~./profile:
-#if [ -d "/opt/anaconda3/bin" ] ; then
-#    PATH="/opt/anaconda3/bin:$PATH"
-#fi
+if [ -d "/opt/anaconda3/bin" ] ; then
+    PATH="/opt/anaconda3/bin:$PATH"
+fi
 cd $HOME; source .profile; source .bashrc
 conda update conda && conda update --all
 conda init
