@@ -58,6 +58,7 @@ cd $HOME; source .profile; source .bashrc
 sudo shutdown -r now
 conda update -n base -c defaults conda
 conda update conda && conda update --all
+conda install python=3.14
 pip3 install prospector setuptools
 conda install -c conda-forge ipympl
 conda install nodejs
