@@ -4,6 +4,9 @@ sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
 sudo apt-get autoremove -y
 sudo apt-get clean
+#add repo for ffmpeg
+sudo add-apt-repository ppa:savoury1/ffmpeg6
+sudo apt update; sudo apt upgrade -y; sudo apt install -y ffmpeg
 # Add repos for Docker CE
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -31,6 +34,7 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/p
 rm -f packages.microsoft.gpg
 sudo apt update
 
+sudo snap install kdenlive
 # for development
 sudo snap install termius-app
 #sudo snap install pycharm-community --classic
