@@ -1,4 +1,4 @@
-sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release  
+sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release texlive-xetex texlive-fonts-recommended texlive-plain-generic
 # Remove Thunderbird
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
