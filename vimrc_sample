@@ -1,0 +1,31 @@
+## save ro /etc/vim/vimrc, /etc/vimrc or /home/user/.vimrc
+" Minimal .vimrc for a clean, stock-like setup
+
+" Show line numbers
+set number
+
+" Enable syntax highlighting
+syntax on
+
+" Highlight matching brackets
+set showmatch
+
+" Use spaces instead of tabs (common in configs/code)
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+" Keep some context when scrolling
+set scrolloff=3
+
+" Incremental search, case-insensitive unless uppercase used
+set incsearch
+set ignorecase
+set smartcase
+
+" Show current command in bottom right
+set showcmd
+
+" Better backspace behavior
+set backspace=indent,eol,start
+
