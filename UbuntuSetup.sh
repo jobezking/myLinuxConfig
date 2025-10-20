@@ -1,5 +1,5 @@
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
-texlive-xetex texlive-fonts-recommended texlive-plain-generic snapd snapd-xdg-open
+texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open
 # Remove Thunderbird
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
