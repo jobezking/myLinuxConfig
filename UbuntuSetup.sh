@@ -1,4 +1,5 @@
-sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release texlive-xetex texlive-fonts-recommended texlive-plain-generic
+sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
+texlive-xetex texlive-fonts-recommended texlive-plain-generic snapd snapd-xdg-open
 # Remove Thunderbird
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
@@ -25,8 +26,6 @@ cd bin
 #
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
-## Get Github desktop fork repo from shiftkey
-wget https://github.com/shiftkey/desktop/releases/download/release-3.4.13-linux1/GitHubDesktop-linux-amd64-3.4.13-linux1.deb #get latest from https://github.com/shiftkey/desktop/releases
 #Microsoft Visual Studio repo
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -34,15 +33,15 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/p
 rm -f packages.microsoft.gpg
 sudo apt update
 
-sudo snap install kdenlive
 # for development
 sudo snap install termius-app
+sudo snap install notepad-plus-plus # if the box does not have Steam
+sudo snap install atom --classic #if the box has Steam
 #sudo snap install pycharm-community --classic
-wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor \
 python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev \
 net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
-vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes github-desktop ./gitkraken-amd64.deb ./GitHubDesktop-linux-*
+vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes microsoft-edge-stable python3.14-full kdenlive 
 
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
