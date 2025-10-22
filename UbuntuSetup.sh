@@ -67,6 +67,29 @@ conda install -c conda-forge ipympl
 conda install nodejs
 jupyter labextension install @jupyter-widgets/jupyterlab-manager 
 jupyter labextension install jupyter-matplotlib
+conda create --name main_env python=3.14
+conda activate main_env
+#obtain requirements.txt from https://github.com/jobezking/learn_flask 
+pip3 install -r requirements.txt
+conda deactivate
+
+#Nvidia only part 2: Pytorch and TensorFlow
+conda create --name ml_env python=3.14
+conda activate ml_env
+#obtain requirements.txt from https://github.com/jobezking/learn_flask
+pip3 install -r requirements.txt
+python -m pip install --upgrade pip setuptools wheel
+python -c "import ctypes, sys; print('ok')" && echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install tensorflow
+pip install nvidia-cuda-runtime-cu12 nvidia-cuda-cupti-cu12 nvidia-cublas-cu12 nvidia-cudnn-cu12 nvidia-cufft-cu12 nvidia-curand-cu12 nvidia-cusolver-cu12 nvidia-cusparse-cu12
+pip install cupy-cuda12x
+pip install jupyterlab ipykernel
+python -m ipykernel install --user --name mlgpu --display-name "Python (mlgpu)"
+#for Pycharm: Settings → Project → Python Interpreter → Add → Existing → point to ~/mlgpu/bin/python
+#for Vscode, Select the “Python (mlgpu)” interpreter in the status bar
+#or for both/either conda activate ml_env
+conda deactivate
 
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
