@@ -38,7 +38,7 @@ rm -f packages.microsoft.gpg
 sudo apt update
 
 # for development
-sudo snap install termius-app
+sudo snap install termius-app steam
 #sudo snap install pycharm-community --classic
 sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor \
 python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev displaylink-driver \
