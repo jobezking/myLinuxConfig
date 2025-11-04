@@ -5,6 +5,9 @@ sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
 sudo apt-get autoremove -y
 sudo apt-get clean
+wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
+sudo apt install ./synaptics-repository-keyring.deb -y
+rm synaptics-repository-keyring.deb
 #add repo for ffmpeg
 sudo add-apt-repository ppa:savoury1/ffmpeg6
 sudo apt update; sudo apt upgrade -y; sudo apt install -y ffmpeg
@@ -37,7 +40,7 @@ sudo apt update
 sudo snap install termius-app
 #sudo snap install pycharm-community --classic
 sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor \
-python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev \
+python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev displaylink-driver \
 net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
 vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes microsoft-edge-stable python3.14-full kate kdenlive 
 
