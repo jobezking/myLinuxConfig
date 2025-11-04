@@ -71,7 +71,7 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install jupyter-matplotlib
 conda create --name main_env python=3.14
 conda activate main_env
-#obtain requirements.txt from https://github.com/jobezking/learn_flask 
+wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
 conda deactivate
 
