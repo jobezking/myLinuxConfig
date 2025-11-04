@@ -82,7 +82,8 @@ conda activate ml_env
 pip3 install -r requirements.txt
 python -m pip install --upgrade pip setuptools wheel
 python -c "import ctypes, sys; print('ok')" && echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch torchvision torchaudio 
+pip install torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install tensorflow
 pip install nvidia-cuda-runtime-cu12 nvidia-cuda-cupti-cu12 nvidia-cublas-cu12 nvidia-cudnn-cu12 nvidia-cufft-cu12 nvidia-curand-cu12 nvidia-cusolver-cu12 nvidia-cusparse-cu12
 pip install cupy-cuda12x
