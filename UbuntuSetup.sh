@@ -1,8 +1,9 @@
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
 texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular
-# Remove Thunderbird
+# Remove Thunderbird and Rhythmbox
 sudo snap remove --purge thunderbird
 sudo apt-get remove --purge 'thunderbird*'
+sudo apt-get --purge remove rhythmbox
 sudo apt-get autoremove -y
 sudo apt-get clean
 wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
