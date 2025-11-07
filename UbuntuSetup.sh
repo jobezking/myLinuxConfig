@@ -9,9 +9,9 @@ sudo apt-get clean
 wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
 sudo apt install ./synaptics-repository-keyring.deb -y
 rm synaptics-repository-keyring.deb
-#add repo for ffmpeg
-sudo add-apt-repository ppa:savoury1/ffmpeg6
-sudo apt update; sudo apt upgrade -y; sudo apt install -y ffmpeg
+#add repo for ffmpeg has never actually worked for me
+#sudo add-apt-repository ppa:savoury1/ffmpeg6
+#sudo apt update; sudo apt upgrade -y; sudo apt install -y ffmpeg
 # Add repos for Docker CE
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -55,11 +55,8 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
 sudo sh Anaconda3*
 #once done perform below
 sudo chown -R $USER:$USER /opt/anaconda3
-#in ~./profile:
-if [ -d "/opt/anaconda3/bin" ] ; then
-    PATH="/opt/anaconda3/bin:$PATH"
-fi
-cd $HOME; source .profile; source .bashrc
+echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.profile 
 sudo shutdown -r now
 conda update -n base -c defaults conda
 conda update conda && conda update --all
@@ -67,6 +64,9 @@ conda install python=3.14
 pip3 install prospector setuptools
 conda install -c conda-forge ipympl
 conda install nodejs
+conda install -c conda-forge jupyterlab
+conda install nb_conda_kernels
+#jupyter labextension install @jupyterlab/matplotlib-extension
 jupyter labextension install @jupyter-widgets/jupyterlab-manager 
 jupyter labextension install jupyter-matplotlib
 conda create --name main_env python=3.14
@@ -74,7 +74,8 @@ conda activate main_env
 wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
 conda deactivate
-
+echo 'conda activate main_env' >> ~/.bashrc
+echo 'conda activate main_env' >> ~/.profile
 #Nvidia only part 2: Pytorch and TensorFlow
 conda create --name ml_env python=3.14
 conda activate ml_env
