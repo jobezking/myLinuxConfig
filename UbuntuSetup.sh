@@ -73,6 +73,8 @@ conda create --name main_env python=3.14
 conda activate main_env
 wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
+pip3 install ipykernel
+python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
 echo 'conda activate main_env' >> ~/.profile
@@ -90,6 +92,8 @@ pip install nvidia-cuda-runtime-cu12 nvidia-cuda-cupti-cu12 nvidia-cublas-cu12 n
 pip install cupy-cuda12x
 pip install jupyterlab ipykernel
 python -m ipykernel install --user --name mlgpu --display-name "Python (mlgpu)"
+python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
+conda deactivate
 #for Pycharm: Settings → Project → Python Interpreter → Add → Existing → point to ~/mlgpu/bin/python
 #for Vscode, Select the “Python (mlgpu)” interpreter in the status bar
 #or for both/either conda activate ml_env
