@@ -59,6 +59,7 @@ echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.bashrc
 echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.profile 
 sudo shutdown -r now
 conda update -n base -c defaults conda
+conda update -n base -c conda-forge conda
 conda update conda && conda update --all
 conda install python=3.14
 pip3 install prospector setuptools
