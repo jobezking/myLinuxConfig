@@ -40,7 +40,7 @@ sudo apt update
 # for development
 sudo snap install termius-app steam
 #sudo snap install pycharm-community --classic
-sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor \
+sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor obs-studio \
 python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev displaylink-driver \
 net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
 vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes microsoft-edge-stable python3.14-full kate kdenlive 
