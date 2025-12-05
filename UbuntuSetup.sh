@@ -43,8 +43,15 @@ sudo snap install termius-app steam
 sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor obs-studio \
 python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev displaylink-driver \
 net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
-vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes microsoft-edge-stable python3.14-full kate kdenlive 
+vlc filezilla default-jdk default-jre netbeans golang-go gnome-boxes microsoft-edge-stable python3.14-full kate gedit kdenlive 
+###
+git config --global user.name "My Name" && \
+git config --global user.email "myemail@example.com" && \
+git config --global core.editor "vim" && \
+git config --global credential.helper "gedit" && \
+git config --global core.autocrlf true
 
+###
 #Nvidia only
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
 # ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf "scale_cuda=1920:1080" -c:v h264_nvenc -preset fast -b:v 8M -c:a copy output.mp4
