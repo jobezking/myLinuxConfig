@@ -50,14 +50,17 @@ sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutd
 # ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf "scale_cuda=1920:1080" -c:v h264_nvenc -preset fast -b:v 8M -c:a copy output.mp4
 
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
-curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+curl -O https://repo.anaconda.com/archive/Anaconda3-2025.06-1-Linux-x86_64.sh
     #after running command below, choose /opt/anaconda3 as target directory
 sudo sh Anaconda3*
 #once done perform below
 sudo chown -R $USER:$USER /opt/anaconda3
-echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.bashrc
-echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.profile 
-sudo shutdown -r now
+cd /opt/anaconda3/bin
+./conda init
+#Try to exit shell and get back in. above should update /home/username/.bashrc with below
+#echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.bashrc
+#echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.profile 
+#sudo shutdown -r now
 conda update -n base -c defaults conda
 conda update -n base -c conda-forge conda
 conda update conda && conda update --all
