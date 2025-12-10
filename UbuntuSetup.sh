@@ -85,7 +85,7 @@ conda create --name main_env python=3.14
 conda activate main_env
 wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
-pip3 install ipykernel
+pip3 install ipykernel xgboost
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
@@ -102,7 +102,7 @@ pip install torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install tensorflow
 pip install nvidia-cuda-runtime-cu12 nvidia-cuda-cupti-cu12 nvidia-cublas-cu12 nvidia-cudnn-cu12 nvidia-cufft-cu12 nvidia-curand-cu12 nvidia-cusolver-cu12 nvidia-cusparse-cu12
 pip install cupy-cuda12x
-pip install jupyterlab ipykernel
+pip install jupyterlab ipykernel xgboost
 python -m ipykernel install --user --name mlgpu --display-name "Python (mlgpu)"
 python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
 conda deactivate
