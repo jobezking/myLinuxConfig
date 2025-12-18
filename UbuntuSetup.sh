@@ -123,6 +123,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 pip3 install tensorflow-rocm
 echo 'export HSA_OVERRIDE_GFX_VERSION=10.3.0' >> ~/.bashrc
 echo 'conda activate ml_env' >> ~/.bashrc
+conda install -c conda-forge jupyterlab=4.5.0 nodejs=20 ipywidgets ipympl scikit-learn=1.8.0
 conda deactivate
 python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
 
