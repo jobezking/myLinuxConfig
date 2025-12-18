@@ -1,15 +1,15 @@
 #initial install
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
+sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
-texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo
+texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
+build-essential cmake gdb manpages-dev
 # Remove Thunderbird and Rhythmbox
 sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox
 sudo apt-get autoremove -y; sudo apt-get clean
 wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
 sudo apt install ./synaptics-repository-keyring.deb -y
 rm synaptics-repository-keyring.deb
-#add repo for ffmpeg has never actually worked for me
-#sudo add-apt-repository ppa:savoury1/ffmpeg6
-#sudo apt update; sudo apt upgrade -y; sudo apt install -y ffmpeg
 # Add repos for Docker CE
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -26,8 +26,6 @@ cd jetbrains-toolbox-* #will need to do auto-complete or ls to get exact directo
 cd bin
 ./jetbrains-toolbox 
 #
-sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
-sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
 #Microsoft Visual Studio repo
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -40,8 +38,8 @@ sudo apt update
 sudo snap install termius-app steam
 #sudo snap install pycharm-community --classic
 sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor thunar \
-python3 python3-pip python3-virtualenv python3-dev build-essential libssl-dev libffi-dev \
-net-tools python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
+python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools \
+python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
 vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate gedit \
 microsoft-edge-stable obs-studio kdenlive gnome-boxes displaylink-driver
 ###
