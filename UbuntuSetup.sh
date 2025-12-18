@@ -54,6 +54,19 @@ git config --global core.autocrlf true
 sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
 # ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf "scale_cuda=1920:1080" -c:v h264_nvenc -preset fast -b:v 8M -c:a copy output.mp4
 
+###
+#AMD RDNA GPUs only
+cd $HOME; sudo apt update && sudo apt upgrade -y
+# Add AMD ROCm GPG key
+wget https://repo.radeon.com/rocm/rocm.gpg.key
+sudo mv rocm.gpg.key /etc/apt/trusted.gpg.d/
+# Add ROCm repo for Ubuntu 24.04
+wget https://repo.radeon.com/amdgpu-install/7.1.1/ubuntu/noble/amdgpu-install_7.1.1.70101-1_all.deb
+sudo apt install ./amdgpu-install_7.1.1.70101-1_all.deb radeontop -y 
+sudo apt update
+sudo amdgpu-install --usecase=graphics,rocm,hiplibsdk --no-dkms
+sudo usermod -a -G render,video $USER; sudo shutdown -r now
+#
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
 curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-1-Linux-x86_64.sh
     #after running command below, choose /opt/anaconda3 as target directory
@@ -82,8 +95,8 @@ python -m ipykernel install --user --name=main_env --display-name "Python (main_
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
 echo 'conda activate main_env' >> ~/.profile
-#Nvidia only part 2: Pytorch and TensorFlow
-conda create --name ml_env python=3.14
+#Nvidia only part 2: PyTorch and TensorFlow
+conda create --name ml_env python=3.11
 conda activate ml_env
 #obtain requirements.txt from https://github.com/jobezking/learn_flask
 pip3 install -r requirements.txt
@@ -102,6 +115,16 @@ conda deactivate
 #for Vscode, Select the “Python (mlgpu)” interpreter in the status bar
 #or for both/either conda activate ml_env
 conda deactivate
+
+#AMD RDNA only part 2: Pytorch and TensorFlow
+conda create -n ml_env python=3.11
+conda activate ml_env
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
+pip3 install tensorflow-rocm
+echo 'export HSA_OVERRIDE_GFX_VERSION=10.3.0' >> ~/.bashrc
+echo 'conda activate ml_env' >> ~/.bashrc
+conda deactivate
+python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
 
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
