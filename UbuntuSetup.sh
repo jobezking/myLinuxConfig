@@ -72,19 +72,14 @@ conda update -n base -c defaults conda
 conda update -n base -c conda-forge conda
 conda update conda && conda update --all
 conda install python=3.14
-pip3 install prospector setuptools
-conda install -c conda-forge ipympl
 conda install nodejs
-conda install -c conda-forge jupyterlab
+conda install -c conda-forge jupyterlab ipywidgets ipympl
 conda install nb_conda_kernels
-#jupyter labextension install @jupyterlab/matplotlib-extension
-jupyter labextension install @jupyter-widgets/jupyterlab-manager 
-jupyter labextension install jupyter-matplotlib
 conda create --name main_env python=3.14
 conda activate main_env
 wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
-pip3 install ipykernel xgboost
+pip3 install ipykernel xgboost prospector setuptools
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
@@ -94,7 +89,7 @@ conda create --name ml_env python=3.14
 conda activate ml_env
 #obtain requirements.txt from https://github.com/jobezking/learn_flask
 pip3 install -r requirements.txt
-python -m pip install --upgrade pip setuptools wheel
+python -m pip install --upgrade pip setuptools wheel prospector
 python -c "import ctypes, sys; print('ok')" && echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
 pip install torch torchvision torchaudio 
 pip install torchaudio --index-url https://download.pytorch.org/whl/cu121
