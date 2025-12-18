@@ -46,8 +46,8 @@ microsoft-edge-stable obs-studio kdenlive gnome-boxes displaylink-driver
 ###
 git config --global user.name "My Name" && \
 git config --global user.email "myemail@example.com" && \
-git config --global core.editor "vim" && \
-git config --global credential.helper "gedit" && \
+git config --global core.editor "kate" && \
+git config --global credential.helper "" && \
 git config --global core.autocrlf true
 
 ###
