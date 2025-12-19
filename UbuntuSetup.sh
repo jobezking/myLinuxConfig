@@ -84,7 +84,7 @@ conda update -n base -c conda-forge conda
 conda update conda && conda update --all
 conda install python=3.14
 conda install nodejs
-conda install -c conda-forge jupyterlab ipywidgets ipympl
+conda install -c conda-forge jupyter jupyterlab ipywidgets ipympl
 conda install nb_conda_kernels
 conda create --name main_env python=3.14
 conda activate main_env
