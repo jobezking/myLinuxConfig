@@ -3,7 +3,7 @@ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"   
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
 texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
-build-essential cmake gdb manpages-dev
+build-essential cmake gdb manpages-dev tree
 # Remove Thunderbird and Rhythmbox
 sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox
 sudo apt-get autoremove -y; sudo apt-get clean
