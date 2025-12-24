@@ -86,11 +86,14 @@ conda install python=3.14
 conda install nodejs
 conda install -c conda-forge jupyter jupyterlab ipywidgets ipympl
 conda install nb_conda_kernels
-conda create --name main_env python=3.14
+#update main_env.yml with desired Python version
+conda env create -f main_env.yml -n main_env
+#conda create --name main_env python=3.14
 conda activate main_env
-wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
-pip3 install -r requirements.txt
-pip3 install ipykernel xgboost prospector setuptools pandas-profiling sweetviz
+conda env export > main_env.yml
+#wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
+#pip3 install -r requirements.txt
+#pip3 install ipykernel xgboost prospector setuptools pandas-profiling sweetviz
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
