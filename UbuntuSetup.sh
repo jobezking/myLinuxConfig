@@ -90,7 +90,7 @@ conda create --name main_env python=3.14
 conda activate main_env
 wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
 pip3 install -r requirements.txt
-pip3 install ipykernel xgboost prospector setuptools
+pip3 install ipykernel xgboost prospector setuptools pandas-profiling sweetviz
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
 echo 'conda activate main_env' >> ~/.bashrc
