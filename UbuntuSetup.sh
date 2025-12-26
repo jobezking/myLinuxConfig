@@ -1,12 +1,11 @@
-#initial install
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
 texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
 build-essential cmake gdb manpages-dev tree
 # Remove Thunderbird and Rhythmbox
-sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox
-sudo apt-get autoremove -y; sudo apt-get clean
+sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox; sudo apt-get autoremove -y; sudo apt-get clean
+#
 wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
 sudo apt install ./synaptics-repository-keyring.deb -y
 rm synaptics-repository-keyring.deb
@@ -48,24 +47,6 @@ git config --global user.email "myemail@example.com" && \
 git config --global core.editor "kate" && \
 git config --global credential.helper "" && \
 git config --global core.autocrlf true
-
-###
-#Nvidia only
-sudo ubuntu-drivers install; sudo apt install -y nvidia-cuda-toolkit; sudo shutdown -r now
-# ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf "scale_cuda=1920:1080" -c:v h264_nvenc -preset fast -b:v 8M -c:a copy output.mp4
-
-###
-#AMD RDNA GPUs only
-cd $HOME; sudo apt update && sudo apt upgrade -y
-# Add AMD ROCm GPG key
-wget https://repo.radeon.com/rocm/rocm.gpg.key
-sudo mv rocm.gpg.key /etc/apt/trusted.gpg.d/
-# Add ROCm repo for Ubuntu 24.04
-wget https://repo.radeon.com/amdgpu-install/7.1.1/ubuntu/noble/amdgpu-install_7.1.1.70101-1_all.deb
-sudo apt install ./amdgpu-install_7.1.1.70101-1_all.deb radeontop -y 
-sudo apt update
-sudo amdgpu-install --usecase=graphics,rocm,hiplibsdk --no-dkms
-sudo usermod -a -G render,video $USER; sudo shutdown -r now
 #
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
 curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-1-Linux-x86_64.sh
@@ -75,10 +56,6 @@ sudo sh Anaconda3*
 sudo chown -R $USER:$USER /opt/anaconda3
 cd /opt/anaconda3/bin
 ./conda init
-#Try to exit shell and get back in. above should update /home/username/.bashrc with below
-#echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.bashrc
-#echo 'export PATH="/opt/anaconda3/bin:$PATH"' >> ~/.profile 
-#sudo shutdown -r now
 conda update -n base -c defaults conda
 conda update -n base -c conda-forge conda
 conda update conda && conda update --all
@@ -88,48 +65,15 @@ conda install -c conda-forge jupyter jupyterlab ipywidgets ipympl
 conda install nb_conda_kernels
 #update main_env.yml with desired Python version
 conda env create -f main_env.yml -n main_env
-#conda create --name main_env python=3.14
 conda activate main_env
 conda env export > main_env.yml
-#wget https://raw.githubusercontent.com/jobezking/learn_flask/refs/heads/main/requirements.txt
-#pip3 install -r requirements.txt
-#pip3 install ipykernel xgboost prospector setuptools pandas-profiling sweetviz
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
 conda deactivate
-echo 'conda activate main_env' >> ~/.bashrc
-echo 'conda activate main_env' >> ~/.profile
-#Nvidia only part 2: PyTorch and TensorFlow
-conda create --name ml_env python=3.11
-conda activate ml_env
-#obtain requirements.txt from https://github.com/jobezking/learn_flask
-pip3 install -r requirements.txt
-python -m pip install --upgrade pip setuptools wheel prospector
-python -c "import ctypes, sys; print('ok')" && echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
-pip install torch torchvision torchaudio 
-pip install torchaudio --index-url https://download.pytorch.org/whl/cu121
-pip install tensorflow
-pip install nvidia-cuda-runtime-cu12 nvidia-cuda-cupti-cu12 nvidia-cublas-cu12 nvidia-cudnn-cu12 nvidia-cufft-cu12 nvidia-curand-cu12 nvidia-cusolver-cu12 nvidia-cusparse-cu12
-pip install cupy-cuda12x
-pip install jupyterlab ipykernel xgboost
-python -m ipykernel install --user --name mlgpu --display-name "Python (mlgpu)"
-python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
-conda deactivate
+conda info --envs
 #for Pycharm: Settings → Project → Python Interpreter → Add → Existing → point to ~/mlgpu/bin/python
 #for Vscode, Select the “Python (mlgpu)” interpreter in the status bar
 #or for both/either conda activate ml_env
 conda deactivate
-
-#AMD RDNA only part 2: Pytorch and TensorFlow
-conda create -n ml_env python=3.11
-conda activate ml_env
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
-pip3 install tensorflow-rocm
-echo 'export HSA_OVERRIDE_GFX_VERSION=10.3.0' >> ~/.bashrc
-echo 'conda activate ml_env' >> ~/.bashrc
-conda install -c conda-forge jupyterlab=4.5.0 nodejs=20 ipywidgets ipympl scikit-learn=1.8.0
-conda deactivate
-python -m ipykernel install --user --name=ml_env --display-name "Python (ml_env)"
-
 # To install Spyder ( spyder-ide.org ) for Python development. Install in /opt/spyder-6 directory.
 # To run: spyder (may require reboot to work from command line). To uninstall: sudo /opt/spyder-6/uninstall-spyder.sh 
 sudo ls
