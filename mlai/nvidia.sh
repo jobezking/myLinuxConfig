@@ -31,6 +31,8 @@ sudo reboot
 export PATH=${PATH}:/usr/local/cuda-13.1/bin
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda-13.1/lib64
 #
-conda env create -f mlai_env.yml -n mlai_env
+conda env create -f eda_env.yml -n mlai_env
 python -m ipykernel install --user --name=mlai_env --display-name "Python (mlai_env)"
 conda activate mlai_env
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install tensorflow
