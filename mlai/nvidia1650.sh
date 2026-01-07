@@ -28,7 +28,7 @@ sudo apt install -y libcudnn9-cuda-12 libcudnn9-dev-cuda-12
 sudo apt install -y tensorrt
 mkdir ~/pytorch && mkdir ~/tensorflow && mkdir ~/mlai
 cd ~/pytorch
-python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
+python3.11 -m venv venv; source venv/bin/activate  
 pip install --upgrade pip setuptools wheel
 pip install paddlepaddle-gpu paddleocr \
     torch torchvision torchaudio \
@@ -42,7 +42,7 @@ pip-chill > $HOME/requirements_pytorch.txt
 cd $HOME
 cd ~/tensorflow
 cd ~/mlai
-python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
+python3.11 -m venv venv; source venv/bin/activate  
 pip install --upgrade pip setuptools wheel
 pip install tensorflow[and-cuda]==2.17.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
@@ -54,7 +54,7 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas
 pip-chill > $HOME/requirements_mlai.txt
 cd $HOME
-python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
+python3.11 -m venv venv; source venv/bin/activate
 pip install --upgrade pip setuptools wheel
 pip install tensorflow[and-cuda]==2.17.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
