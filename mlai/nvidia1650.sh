@@ -76,12 +76,12 @@ conda create -n ml_e python=3.11 -c conda-forge
 conda deactivate
 conda activate pyt_e
 pip install -r requirements_pytorch.txt --extra-index-url https://download.pytorch.org/whl/cu130
-conda install -c conda-forge opencv-python ydata-profiling vaex
+conda install -c conda-forge opencv ydata-profiling
 conda deactivate
 conda activate tf_e
 pip install -r requirements_tensorflow.txt 
-conda install -c conda-forge opencv-python ydata-profiling vaex
+conda install -c conda-forge opencv ydata-profiling
 conda deactivate
 conda activate ml_e
 pip install -r requirements_mle.txt --extra-index-url https://download.pytorch.org/whl/cu130
-conda install -c conda-forge opencv-python ydata-profiling vaex
+conda install -c conda-forge opencv ydata-profiling
