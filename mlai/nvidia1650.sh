@@ -1,5 +1,7 @@
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install -y python3.14-full python3.12-full python3.11-full
 sudo apt install -y python3-pip python3-venv python3-full python3-dev build-essential g++ gcc g++-12 freeglut3-dev libx11-dev libxmu-dev libxi-dev libglu1-mesa-dev libfreeimage-dev libglfw3-dev linux-headers-$(uname -r) -y
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
