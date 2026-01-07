@@ -67,5 +67,5 @@ pip install tensorflow[and-cuda]==2.17.0 \
     --extra-index-url https://download.pytorch.org/whl/cu130
 nvcc --version
 pip-chill > requirements_tensorflow.txt
-#EDA env only!
+#for both
 conda install -c conda-forge opencv-python ydata-profiling vaex
