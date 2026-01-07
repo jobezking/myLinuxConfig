@@ -25,22 +25,27 @@ cd jetbrains-toolbox-* #will need to do auto-complete or ls to get exact directo
 cd bin
 ./jetbrains-toolbox 
 #
-#Microsoft Visual Studio repo
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg  
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-rm -f packages.microsoft.gpg
+#Microsoft Visual Studio
+curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
+#Google Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#Steam
+wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
+#Install *deb files
+sudo apt install -y ./*.deb
+sudo apt update
+#Microsoft Edge
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.asc > /dev/null
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
 sudo apt update
 
 # for development
-sudo snap install termius-app steam
-#sudo snap install pycharm-community --classic
-sudo apt install -y code git-all gh konsole wget nano vim gnome-console gnome-text-editor thunar \
+sudo snap install termius-app 
+sudo apt install -y git-all gh konsole wget nano vim gnome-console gnome-text-editor thunar \
 python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools \
 python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
 vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate gedit \
-microsoft-edge-stable obs-studio kdenlive gnome-boxes displaylink-driver
+microsoft-edge-stable google-chrome-beta obs-studio kdenlive gnome-boxes displaylink-driver
 ###
 git config --global user.name "My Name" && \
 git config --global user.email "myemail@example.com" && \
@@ -80,10 +85,6 @@ sudo ls
 wget https://github.com/spyder-ide/spyder/releases/latest/download/Spyder-Linux-x86_64.sh && sudo sh Spyder-Linux-x86_64.sh
 
 sudo apt update && sudo apt upgrade -y --allow-downgrades && sudo apt dist-upgrade -y && sudo apt autoremove -y
-
-#Google Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb; sudo apt update
 
 #Chrome Remote Desktop. To avoid session conflicts, create a dedicated account. Do not configure Chrome Remote Desktop in a user account
 sudo adduser crdp
