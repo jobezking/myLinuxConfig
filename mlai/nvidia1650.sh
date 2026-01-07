@@ -66,6 +66,21 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas \
     --extra-index-url https://download.pytorch.org/whl/cu130
 nvcc --version
-pip-chill > requirements_tensorflow.txt
-#for both
+pip-chill > $HOME/requirements_mle.txt
+#Create Conda environments
+conda create -n pyt_e python=3.11 -c conda-forge; \
+conda create -n tf_e python=3.11 -c conda-forge; \
+conda create -n ml_e python=3.11 -c conda-forge
+#for all
+conda deactivate
+conda activate pyt_e
+pip install -r requirements_pytorch.txt --extra-index-url https://download.pytorch.org/whl/cu130
+conda install -c conda-forge opencv-python ydata-profiling vaex
+conda deactivate
+conda activate tf_e
+pip install -r requirements_tensorflow.txt 
+conda install -c conda-forge opencv-python ydata-profiling vaex
+conda deactivate
+conda activate ml_e
+pip install -r requirements_mle.txt --extra-index-url https://download.pytorch.org/whl/cu130
 conda install -c conda-forge opencv-python ydata-profiling vaex
