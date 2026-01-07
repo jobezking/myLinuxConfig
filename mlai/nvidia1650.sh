@@ -26,7 +26,7 @@ export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source ~/.bashrc
 sudo apt install -y libcudnn9-cuda-12 libcudnn9-dev-cuda-12
 sudo apt install -y tensorrt
-mkdir ~/pytorch && mkdir ~/tensorflow
+mkdir ~/pytorch && mkdir ~/tensorflow && mkdir ~/mlai
 cd ~/pytorch
 python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
 pip install --upgrade pip setuptools wheel
@@ -41,6 +41,7 @@ pip install paddlepaddle-gpu paddleocr \
 pip-chill > $HOME/requirements_pytorch.txt
 cd $HOME
 cd ~/tensorflow
+cd ~/mlai
 python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
 pip install --upgrade pip setuptools wheel
 pip install tensorflow[and-cuda]==2.17.0 \
@@ -51,7 +52,7 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas
-pip-chill > $HOME/requirements_tensorflow.txt
+pip-chill > $HOME/requirements_mlai.txt
 cd $HOME
 python3.11 -m venv venv; source venv/bin/activate; cd $HOME  #everything else python3.12
 pip install --upgrade pip setuptools wheel
