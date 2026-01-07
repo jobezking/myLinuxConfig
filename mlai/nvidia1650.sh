@@ -41,7 +41,6 @@ pip install paddlepaddle-gpu paddleocr \
 pip-chill > $HOME/requirements_pytorch.txt
 cd $HOME
 cd ~/tensorflow
-cd ~/mlai
 python3.11 -m venv venv; source venv/bin/activate  
 pip install --upgrade pip setuptools wheel
 pip install tensorflow[and-cuda]==2.17.0 \
@@ -54,6 +53,7 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas
 pip-chill > $HOME/requirements_mlai.txt
 cd $HOME
+cd ~/mlai
 python3.11 -m venv venv; source venv/bin/activate
 pip install --upgrade pip setuptools wheel
 pip install tensorflow[and-cuda]==2.17.0 \
