@@ -3,6 +3,7 @@ sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo
 sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
 texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
 build-essential cmake gdb manpages-dev tree
+sudo snap install termius-app
 # Remove Thunderbird and Rhythmbox
 sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox; sudo apt-get autoremove -y; sudo apt-get clean
 #
@@ -40,7 +41,6 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/e
 sudo apt update
 
 # for development
-sudo snap install termius-app 
 sudo apt install -y git-all gh konsole wget nano vim gnome-console gnome-text-editor thunar \
 python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools \
 python3-venv software-properties-common docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose \
@@ -100,24 +100,6 @@ sudo apt install -y chrome-remote-desktop
 #and follow instructions
 sudo systemctl status chrome-remote-desktop@$USER    #to see if service is running
 #when logging in for the first time, DO NOT use the Default X Session. Pick the Ubuntu session.
-
-#Replace Firefox Snap with repo version
-sudo snap remove --purge firefox
-sudo apt-get remove --purge 'firefox*'
-sudo apt-get autoremove
-sudo apt-get clean
-#https://askubuntu.com/questions/1399383/how-to-install-firefox-as-a-traditional-deb-package-without-snap-in-ubuntu-22
-sudo install -d -m 0755 /etc/apt/keyrings
-wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
-#The fingerprint should be 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
-gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); print "\n"$0"\n"}'
-echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
-echo '
-Package: *
-Pin: origin packages.mozilla.org
-Pin-Priority: 1000
-' | sudo tee /etc/apt/preferences.d/mozilla
-sudo apt-get update && sudo apt-get install firefox -y
 
 #How to use LVM to add USBs, sdcards etc.
 
