@@ -34,6 +34,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
 #Install *deb files
 sudo apt install -y ./*.deb
+sudo dpkg --add-architecture i386
 sudo apt update
 #Microsoft Edge
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.asc > /dev/null
