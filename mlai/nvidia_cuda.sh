@@ -36,11 +36,12 @@ cd /opt/anaconda3/bin
 conda update -n base -c defaults conda
 source ~/.bashrc
 conda deactivate
-conda create -n pyt_e python=3.11 -c conda-forge; \
-conda create -n tf_e python=3.11 -c conda-forge; \
-conda create -n ml_e python=3.11 -c conda-forge
-conda activate pyt_e 
+conda create -n py311c129 python=3.11 -c conda-forge; \
+conda create -n tf311c129 python=3.11 -c conda-forge; \
+conda create -n ml311c129 python=3.11 -c conda-forge
+conda activate py311c129 
 pip install --upgrade pip setuptools wheel
+conda install -c nvidia cuda-toolkit=12.9 -y
 pip install paddlepaddle-gpu paddleocr \
     torch torchvision torchaudio \
 	pandas numpy scikit-learn scipy matplotlib matplotlib-inline seaborn xgboost \
@@ -48,13 +49,14 @@ pip install paddlepaddle-gpu paddleocr \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas \
-    --extra-index-url https://download.pytorch.org/whl/cu130
-conda install -c conda-forge opencv ydata-profiling scikit-bio
-conda env export > pyt_e.yml
+    --extra-index-url https://download.pytorch.org/whl/cu129
+conda install -c conda-forge opencv ydata-profiling scikit-bio -y
+conda env export > py311c129.yml
 nvcc --version
 conda deactivate
-conda activate tf_e
+conda activate tf311c129
 pip install --upgrade pip setuptools wheel
+conda install -c nvidia cuda-toolkit=12.9 -y
 pip install tensorflow[and-cuda]==2.17.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
     paddlepaddle-gpu paddleocr \
@@ -63,12 +65,13 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas
-conda install -c conda-forge opencv ydata-profiling scikit-bio
-conda env export > tf_e.yml
+conda install -c conda-forge opencv ydata-profiling scikit-bio -y
+conda env export > tf311c129.yml
 nvcc --version
 conda deactivate
-conda activate ml_e
+conda activate ml311c129
 pip install --upgrade pip setuptools wheel
+conda install -c nvidia cuda-toolkit=12.9 -y
 pip install tensorflow[and-cuda]==2.17.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
     paddlepaddle-gpu paddleocr \
@@ -78,9 +81,9 @@ pip install tensorflow[and-cuda]==2.17.0 \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas \
-    --extra-index-url https://download.pytorch.org/whl/cu130
-conda install -c conda-forge opencv ydata-profiling scikit-bio
-conda env export > ml_e.yml
+    --extra-index-url https://download.pytorch.org/whl/cu129
+conda install -c conda-forge opencv ydata-profiling scikit-bio -y
+conda env export > ml311c129.yml
 nvcc --version
 conda deactivate
 # Add repos for Docker CE
