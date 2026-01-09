@@ -1,4 +1,7 @@
 #!/bin/bash
+conda env list
+conda env remove --name pyt_e -y
+#
 conda deactivate; conda create -n py312c13 python=3.12 -c conda-forge -y; \
 conda create -n tf312c13 python=3.12 -c conda-forge -y;
 
