@@ -1,6 +1,6 @@
 #!/bin/bash
-conda deactivate; conda create -n py312c13 python=3.12 -c conda-forge; \
-conda create -n tf312c13 python=3.12 -c conda-forge;
+conda deactivate; conda create -n py312c13 python=3.12 -c conda-forge -y; \
+conda create -n tf312c13 python=3.12 -c conda-forge -y;
 
 conda activate py312c13
 pip install --upgrade pip setuptools wheel

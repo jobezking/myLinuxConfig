@@ -36,9 +36,9 @@ cd /opt/anaconda3/bin
 conda update -n base -c defaults conda
 source ~/.bashrc
 conda deactivate
-conda create -n py311c129 python=3.11 -c conda-forge; \
-conda create -n tf311c129 python=3.11 -c conda-forge; \
-conda create -n ml311c129 python=3.11 -c conda-forge
+conda create -n py311c129 python=3.11 -c conda-forge -y; \
+conda create -n tf311c129 python=3.11 -c conda-forge -y; \
+conda create -n ml311c129 python=3.11 -c conda-forge -y
 conda activate py311c129 
 pip install --upgrade pip setuptools wheel
 conda install -c nvidia cuda-toolkit=12.9 -y
