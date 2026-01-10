@@ -23,7 +23,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # Path for TensorRT
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source ~/.bashrc
-sudo apt install -y libcudnn9-cuda-12 libcudnn9-dev-cuda-12
+sudo apt install -y libcudnn9-cuda-13 libcudnn9-dev-cuda-13
 sudo apt install -y tensorrt
 #Anaconda access  https://repo.anaconda.com/archive and replace below with latest Anaconda3-*-Linux-x86_64.sh
 curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-1-Linux-x86_64.sh
