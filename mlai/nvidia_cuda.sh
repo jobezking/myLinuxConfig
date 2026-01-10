@@ -32,7 +32,7 @@ sudo sh Anaconda3*
 sudo chown -R $USER:$USER /opt/anaconda3
 cd /opt/anaconda3/bin
 ./conda init
-conda update -n base -c defaults conda
+conda update -n base -c defaults conda -y
 source ~/.bashrc
 conda deactivate
 conda create -n py311c129 python=3.11 -c conda-forge -y; \
