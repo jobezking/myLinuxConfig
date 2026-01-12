@@ -35,12 +35,12 @@ cd /opt/anaconda3/bin
 conda update -n base -c defaults conda -y
 source ~/.bashrc
 conda deactivate
-conda create -n py311c129 python=3.11 -c conda-forge -y; \
-conda create -n tf311c129 python=3.11 -c conda-forge -y; \
-conda create -n ml311c129 python=3.11 -c conda-forge -y
+conda create -n py311c129 python=3.12 -c conda-forge -y; \
+conda create -n tf311c129 python=3.12 -c conda-forge -y; \
+conda create -n ml311c129 python=3.12 -c conda-forge -y
 conda activate py311c129 
 pip install --upgrade pip setuptools wheel
-conda install -c nvidia cuda-toolkit=12.9 -y
+conda install -c nvidia cuda-toolkit=13.0 -y
 pip install paddlepaddle-gpu paddleocr \
     torch torchvision torchaudio \
 	pandas numpy scikit-learn scipy matplotlib matplotlib-inline seaborn xgboost \
@@ -55,8 +55,8 @@ nvcc --version
 conda deactivate
 conda activate tf311c129
 pip install --upgrade pip setuptools wheel
-conda install -c nvidia cuda-toolkit=12.9 -y
-pip install tensorflow[and-cuda]==2.17.0 \
+conda install -c nvidia cuda-toolkit=13.0 -y
+pip install tensorflow[and-cuda]==2.20.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
     paddlepaddle-gpu paddleocr \
 	pandas numpy scikit-learn scipy matplotlib matplotlib-inline seaborn xgboost \
@@ -70,8 +70,8 @@ nvcc --version
 conda deactivate
 conda activate ml311c129
 pip install --upgrade pip setuptools wheel
-conda install -c nvidia cuda-toolkit=12.9 -y
-pip install tensorflow[and-cuda]==2.17.0 \
+conda install -c nvidia cuda-toolkit=13.0 -y
+pip install tensorflow[and-cuda]==2.20.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
     paddlepaddle-gpu paddleocr \
     torch torchvision torchaudio \

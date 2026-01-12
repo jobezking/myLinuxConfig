@@ -24,7 +24,7 @@ conda deactivate
 conda activate tf312c13
 pip install --upgrade pip setuptools wheel
 conda install -c nvidia cuda-toolkit=13.0 -y
-pip install tensorflow[and-cuda]==2.17.0 \
+pip install tensorflow[and-cuda]==2.20.0 \
     tensorrt tensorrt_lean tensorrt_dispatch \
     paddlepaddle-gpu paddleocr \
 	pandas numpy scikit-learn scipy matplotlib matplotlib-inline seaborn xgboost \
