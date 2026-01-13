@@ -48,7 +48,7 @@ pip install paddlepaddle-gpu paddleocr \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas \
-    --extra-index-url https://download.pytorch.org/whl/cu129
+    --extra-index-url https://download.pytorch.org/whl/cu130
 conda install -c conda-forge opencv ydata-profiling scikit-bio -y
 conda env export > py311c129.yml
 nvcc --version
@@ -80,7 +80,7 @@ pip install tensorflow[and-cuda]==2.20.0 \
 	jupyter jupyterlab notebook ipython ipywidgets jupyterlab_widgets ipympl \
 	sqlalchemy requests beautifulsoup4 pillow fsspec pandera pyyaml pip-chill tsfresh \
 	dtale pyjanitor openpyxl statsmodels tqdm  itables geopandas \
-    --extra-index-url https://download.pytorch.org/whl/cu129
+    --extra-index-url https://download.pytorch.org/whl/cu130
 conda install -c conda-forge opencv ydata-profiling scikit-bio -y
 conda env export > ml311c129.yml
 nvcc --version
