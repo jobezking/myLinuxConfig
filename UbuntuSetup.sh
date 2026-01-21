@@ -62,15 +62,12 @@ sudo sh Anaconda3*
 sudo chown -R $USER:$USER /opt/anaconda3
 cd /opt/anaconda3/bin
 ./conda init
-conda update -n base -c defaults conda
-conda update -n base -c conda-forge conda
-conda update conda && conda update --all
-conda install python=3.14
-conda install nodejs
-conda install -c conda-forge jupyter jupyterlab ipywidgets ipympl
-conda install nb_conda_kernels
+conda update conda -y; conda update --all -y
+conda install python=3.14 -y
+conda install -c conda-forge jupyter jupyterlab ipywidgets ipympl nodejs -y
+conda install nb_conda_kernels -y
 #update main_env.yml with desired Python version
-conda env create -f main_env.yml -n main_env
+conda env create -f main_env.yml -n main_env -y
 conda activate main_env
 conda env export > main_env.yml
 python -m ipykernel install --user --name=main_env --display-name "Python (main_env)"
