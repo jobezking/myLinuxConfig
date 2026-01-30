@@ -10,12 +10,16 @@ sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'
 wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
 sudo apt install ./synaptics-repository-keyring.deb -y
 rm synaptics-repository-keyring.deb
-# Add repos for Docker CE
-sudo mkdir -p /etc/apt/keyrings
+# Add repos for Docker CE and Kubernetes
+sudo mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 #Intellij
 #https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
@@ -47,6 +51,9 @@ python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-too
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin \
 vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate gedit \
 microsoft-edge-stable google-chrome-beta obs-studio kdenlive gnome-boxes displaylink-driver
+###
+sudo systemctl start docker; sudo systemctl enable docker
+sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 ###
 git config --global user.name "My Name" && \
 git config --global user.email "myemail@example.com" && \
