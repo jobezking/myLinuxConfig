@@ -53,6 +53,7 @@ vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate ge
 microsoft-edge-stable google-chrome-beta obs-studio kdenlive gnome-boxes displaylink-driver
 ###
 sudo systemctl start docker; sudo systemctl enable docker
+sudo usermod -aG docker $USER
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 ###
 git config --global user.name "My Name" && \
