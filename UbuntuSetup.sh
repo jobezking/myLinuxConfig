@@ -46,12 +46,13 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/e
 sudo apt update
 
 # for development
-sudo apt install -y git-all gh konsole wget nano vim gnome-console gnome-text-editor thunar \
+sudo apt install -y git-all git-lfs gh konsole wget nano vim gnome-console gnome-text-editor thunar \
 python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools python3-venv \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin \
 vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate gedit \
 microsoft-edge-stable google-chrome-beta obs-studio kdenlive gnome-boxes displaylink-driver
 ###
+sudo git lfs install --system --skip-repo
 sudo systemctl start docker; sudo systemctl enable docker
 sudo usermod -aG docker $USER
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
