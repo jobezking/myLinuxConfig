@@ -49,7 +49,7 @@ Finish → Start VM → Install Ubuntu normally. Only enable SSH server. Reboot 
 ip route 		#obtain IP address and default gateway
 upload and modify 50-cloud-init.yaml
 sudo mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
-sudo mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
+sudo mv 50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml
 sudo netplan try
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
