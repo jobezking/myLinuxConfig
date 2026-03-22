@@ -46,11 +46,12 @@ Network
 
 Finish → Start VM → Install Ubuntu normally. Only enable SSH server. Reboot then remove ISO
 
+ip route 		#obtain IP address and default gateway
+upload and modify 50-cloud-init.yaml
+sudo mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
+sudo mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
+sudo netplan try
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y
 sudo apt install -y containerd qemu-guest-agent; sudo systemctl enable --now containerd
-ip route #obtain IP address and default gateway
-modify 50-cloud-init.yaml 
-ls -l /etc/netplan and back up active yaml file
-place 50-cloud-init.yaml to /etc/netplan
-sudo netplan try
