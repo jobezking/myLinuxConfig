@@ -11,7 +11,4 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 sudo apt install -y containerd.io
-containerd config default > config.toml
-sudo mv config.toml /etc/containerd/config.toml
-# Restart to pick up the config
-sudo systemctl restart containerd
+containerd config default > config.toml; sudo mv config.toml /etc/containerd/config.toml; sudo systemctl restart containerd
