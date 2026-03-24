@@ -13,3 +13,4 @@ sudo apt update
 sudo apt install -y containerd.io
 containerd config default > config.toml; sudo mv config.toml /etc/containerd/config.toml; sudo systemctl restart containerd
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-wsl
