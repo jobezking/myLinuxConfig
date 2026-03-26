@@ -23,7 +23,7 @@ sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 192.168.1.232	k8s-data-02
 192.168.1.233	k8s-data-03
 192.168.1.144	k8s-data-04
-###
+### On the first control plane node
 sudo kubeadm init \
   --control-plane-endpoint "192.168.1.195:6443" \
   --pod-network-cidr 10.244.0.0/16 \
@@ -32,30 +32,29 @@ sudo kubeadm init \
   --apiserver-cert-extra-sans k8s-control-02 \
   --apiserver-cert-extra-sans k8s-control-03
 
-###
-1. On k8s-control-01: Generate the Key
-Run this command to upload the certificates to the cluster securely for 2 hours:
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
-Bash
+### For subsequent nodes
+1. On the main control node generate the Key. Run this command to upload the certificates to the cluster securely for 2 hours:
+
 sudo kubeadm init phase upload-certs --upload-certs
-Copy the 64-character hex string it outputs (this is your --certificate-key).
+#This generates --certificate-key 
 
-2. On k8s-control-01: Get the Join Command
-Now get the rest of the join token:
+2. On the main control node generate the control node join command that will include --token and --discovery-token-ca-cert-hash sha256:
 
-Bash
 kubeadm token create --print-join-command
-3. On k8s-control-02: Run the Combined Command
-Now, combine them. Your command on the second node should look like this (using sudo!):
 
-control plane:
+## all other control plane nodes
+3. Run the command
+
 sudo kubeadm join 192.168.1.195:6443 \
   --token <your-token> \
-  --discovery-token-ca-cert-hash sha256:<your-hash> \
+  --discovery-token-ca-cert-hash sha256: <your-hash> \
   --control-plane \
   --certificate-key <the-key-from-step-1>
 
-data plane:
+## all data plane nodes:
+4. Run the command
 
 sudo kubeadm join 192.168.1.195:6443 \
   --token <your-token> \
