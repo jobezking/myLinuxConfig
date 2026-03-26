@@ -33,6 +33,7 @@ sudo kubeadm init \
   --apiserver-cert-extra-sans k8s-control-03
 
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
 ### For subsequent nodes
 1. On the main control node generate the Key. Run this command to upload the certificates to the cluster securely for 2 hours:
