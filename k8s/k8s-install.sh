@@ -32,4 +32,27 @@ sudo kubeadm init \
   --apiserver-cert-extra-sans k8s-control-02 \
   --apiserver-cert-extra-sans k8s-control-03
 
+###
+1. On k8s-control-01: Generate the Key
+Run this command to upload the certificates to the cluster securely for 2 hours:
+
+Bash
+sudo kubeadm init phase upload-certs --upload-certs
+Copy the 64-character hex string it outputs (this is your --certificate-key).
+
+2. On k8s-control-01: Get the Join Command
+Now get the rest of the join token:
+
+Bash
+kubeadm token create --print-join-command
+3. On k8s-control-02: Run the Combined Command
+Now, combine them. Your command on the second node should look like this (using sudo!):
+
+Bash
+sudo kubeadm join 192.168.1.195:6443 \
+  --token <your-token> \
+  --discovery-token-ca-cert-hash sha256:<your-hash> \
+  --control-plane \
+  --certificate-key <the-key-from-step-1>
+  
 https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-wsl
