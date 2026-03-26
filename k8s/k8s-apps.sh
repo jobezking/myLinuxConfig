@@ -1,3 +1,4 @@
+### Monitoring: run only on main control plane node
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 helm version
@@ -10,3 +11,8 @@ http://localhost:3000
 Default credentials:
 User: admin
 Password: prom-operator
+
+### Administration: run on all control plane nodes
+curl -sS https://webinstall.dev/k9s | bash
+sudo mv ~/.local/bin/k9s /usr/local/bin/
+k9s
