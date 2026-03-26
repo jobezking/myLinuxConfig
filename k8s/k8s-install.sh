@@ -48,11 +48,18 @@ kubeadm token create --print-join-command
 3. On k8s-control-02: Run the Combined Command
 Now, combine them. Your command on the second node should look like this (using sudo!):
 
-Bash
+control plane:
 sudo kubeadm join 192.168.1.195:6443 \
   --token <your-token> \
   --discovery-token-ca-cert-hash sha256:<your-hash> \
   --control-plane \
+  --certificate-key <the-key-from-step-1>
+
+data plane:
+
+sudo kubeadm join 192.168.1.195:6443 \
+  --token <your-token> \
+  --discovery-token-ca-cert-hash sha256:<your-hash> \
   --certificate-key <the-key-from-step-1>
   
 https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-wsl
