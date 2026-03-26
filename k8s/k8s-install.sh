@@ -13,4 +13,23 @@ sudo apt update
 sudo apt install -y containerd.io
 containerd config default > config.toml; sudo mv config.toml /etc/containerd/config.toml; sudo systemctl restart containerd
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
+###
+192.168.1.215	k8s-control-01
+192.168.1.156	k8s-control-02
+192.168.1.187	k8s-control-03
+192.168.1.195	k8s-haproxy
+192.168.1.142	k8s-data-01
+192.168.1.232	k8s-data-02
+192.168.1.233	k8s-data-03
+192.168.1.144	k8s-data-04
+###
+sudo kubeadm init \
+  --control-plane-endpoint "192.168.1.195:6443" \
+  --pod-network-cidr 10.244.0.0/16 \
+  --apiserver-cert-extra-sans 192.168.1.195 \
+  --apiserver-cert-extra-sans k8s-control-01 \
+  --apiserver-cert-extra-sans k8s-control-02 \
+  --apiserver-cert-extra-sans k8s-control-03
+
 https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-wsl
