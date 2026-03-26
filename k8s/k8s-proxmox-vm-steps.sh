@@ -54,4 +54,4 @@ sudo netplan try
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y
-sudo apt install -y qemu-guest-agent vim
+sudo apt install -y qemu-guest-agent ca-certificates curl gnupg lsb-release vim
