@@ -1,3 +1,4 @@
+esians511
 ### Monitoring: run only on main control plane node
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
