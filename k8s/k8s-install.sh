@@ -34,6 +34,17 @@ sudo kubeadm init \
 
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+helm version
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+kubectl create namespace monitoring
+helm install kps prometheus-community/kube-prometheus-stack -n monitoring
+kubectl port-forward -n monitoring svc/kps-grafana 3000:80
+http://localhost:3000
+Default credentials:
+User: admin
+Password: prom-operator
 
 ### For subsequent nodes
 1. On the main control node generate the Key. Run this command to upload the certificates to the cluster securely for 2 hours:
@@ -58,6 +69,10 @@ sudo kubeadm join 192.168.1.195:6443 \
  mkdir -p $HOME/.kube
  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+curl -sS https://webinstall.dev/k9s | bash
+sudo mv ~/.local/bin/k9s /usr/local/bin/
+k9s
 
 ## all data plane nodes:
 5. Run the command
