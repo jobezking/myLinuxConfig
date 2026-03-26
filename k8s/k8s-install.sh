@@ -53,8 +53,13 @@ sudo kubeadm join 192.168.1.195:6443 \
   --control-plane \
   --certificate-key <the-key-from-step-1>
 
+4. on all control plane nodes:
+ mkdir -p $HOME/.kube
+ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 ## all data plane nodes:
-4. Run the command
+5. Run the command
 
 sudo kubeadm join 192.168.1.195:6443 \
   --token <your-token> \
