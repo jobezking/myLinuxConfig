@@ -45,6 +45,9 @@ wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo tee /etc/ap
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
 sudo apt update
 
+#nvidia discrete GPU only!
+sudo prime-select nvidia; sudo shutdown -r now
+
 # for development
 sudo apt install -y git-all git-lfs gh konsole wget nano vim gnome-console gnome-text-editor thunar \
 python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools python3-venv \
