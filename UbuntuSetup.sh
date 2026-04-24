@@ -1,4 +1,6 @@
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
+sudo dpkg --add-architecture i386
+sudo apt update
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
 # Add repos for Docker CE and Kubernetes
 sudo mkdir -p -m 755 /etc/apt/keyrings
@@ -41,7 +43,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
 #Install *deb files
 sudo apt install -y ./*.deb
-sudo dpkg --add-architecture i386
 sudo apt update
 
 #nvidia discrete GPU only!
