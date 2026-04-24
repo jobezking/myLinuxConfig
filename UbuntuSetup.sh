@@ -1,15 +1,5 @@
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
-sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
-texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
-build-essential cmake gdb manpages-dev tree
-sudo snap install termius-app
-# Remove Thunderbird and Rhythmbox
-sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox; sudo apt-get autoremove -y; sudo apt-get clean
-#
-wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
-sudo apt install ./synaptics-repository-keyring.deb -y
-rm synaptics-repository-keyring.deb
 # Add repos for Docker CE and Kubernetes
 sudo mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -21,6 +11,15 @@ echo \
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
+#
+sudo apt install -y wget curl ssh gnupg software-properties-common gpg libfuse2 gftp tmux apt-transport-https ca-certificates lsb-release \
+texlive-xetex texlive-fonts-recommended texlive-plain-generic sqlite3 libsqlite3-dev snapd snapd-xdg-open htop okular vainfo \
+build-essential cmake gdb manpages-dev tree
+# Remove Thunderbird and Rhythmbox
+sudo snap remove --purge thunderbird; sudo apt-get remove --purge 'thunderbird*'; sudo apt-get --purge remove rhythmbox; sudo apt-get autoremove -y; sudo apt-get clean
+#
+wget https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
+sudo apt install ./synaptics-repository-keyring.deb -y; rm synaptics-repository-keyring.deb
 #Intellij
 #https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
 cd $HOME/Downloads
