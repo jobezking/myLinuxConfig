@@ -1,7 +1,10 @@
 sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"    #for netbeans
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo 
+sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo
+echo 'deb http://download.opensuse.org/repositories/home:/totoshko88:/rustconn/xUbuntu_24.04/ /' | sudo tee /etc/apt/sources.list.d/rustconn.list
+curl -fsSL https://download.opensuse.org/repositories/home:/totoshko88:/rustconn/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/rustconn.gpg > /dev/null
+sudo apt update
 # Add repos for Docker CE and Kubernetes
 sudo mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -49,7 +52,7 @@ sudo apt update
 sudo prime-select nvidia; sudo shutdown -r now
 
 # for development
-sudo apt install -y git-all git-lfs gh konsole wget nano vim gnome-console gnome-text-editor thunar \
+sudo apt install -y git-all git-lfs gh konsole wget nano vim gnome-console gnome-text-editor thunar rustconn \
 python3 python3-pip python3-virtualenv python3-dev libssl-dev libffi-dev net-tools python3-venv \
 docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin \
 vlc filezilla default-jdk default-jre netbeans golang-go python3.14-full kate gedit \
