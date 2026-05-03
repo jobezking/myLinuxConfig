@@ -2,6 +2,7 @@ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu focal universe"   
 sudo dpkg --add-architecture i386
 sudo apt update
 sudo add-apt-repository ppa:deadsnakes/ppa  #Python repo
+sudo apt update
 echo 'deb http://download.opensuse.org/repositories/home:/totoshko88:/rustconn/xUbuntu_24.04/ /' | sudo tee /etc/apt/sources.list.d/rustconn.list
 curl -fsSL https://download.opensuse.org/repositories/home:/totoshko88:/rustconn/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/rustconn.gpg > /dev/null
 sudo apt update
