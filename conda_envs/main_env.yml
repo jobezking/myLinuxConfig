@@ -113,6 +113,8 @@ dependencies:
       - joblib
       - jupyter-client
       - jupyter-core
+      - jupyterlab
+      - notebook
       - markupsafe
       - mglearn
       - nest-asyncio

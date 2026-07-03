@@ -32,6 +32,7 @@ dependencies:
       - ipykernel
       - ipython
       - mglearn
+      - notebook
       - numba
       - opencv-python
       - openpyxl
