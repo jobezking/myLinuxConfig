@@ -1,3 +1,5 @@
+# k8s-proxmox-vm-steps.sh should be followed first
+# k8s-haproxy-vm-steps.sh should be followed second
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y
 sudo apt install -y ca-certificates curl gnupg lsb-release vim
 sudo mkdir -p -m 755 /etc/apt/keyrings 
