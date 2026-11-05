@@ -42,8 +42,7 @@ sudo netplan try
 
 # disable swap
 sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-sudo sed -i '/ swap.img / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo sed -i 's|^/swap\.img|#/swap.img|' /etc/fstab
 
 # containerd prerequisites
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -59,7 +58,11 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 
-sudo sysctl --system; sudo systemctl restart containerd
+sudo sysctl --system
+
+#
+sudo hostnamectl set-hostname new-name
+ssh-copy-id username@new-name          # from client to server
 
 # install preliminary packages
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean
