@@ -93,11 +93,26 @@ kubectl get nodes
 # If you use custom podCIDR (not 10.244.0.0/16) you first need to download the YAML below and modify the network to match your one.
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 kubectl get nodes
-# add calico networking
-https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises
+# add calico networking see https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises
+kubectl cluster-info dump | grep -m1 cluster-cidr  # get podCIDR from output for step 3
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/v3_projectcalico_org.yaml # Install the Calico CRDs
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/tigera-operator.yaml # Install the Tigera Operator
+curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/custom-resources.yaml
+sed -i 's|cidr: 192.168.0.0/16|cidr: 10.244.0.0/16|' custom-resources.yaml  # Edit the file to set the correct podCIDR from step 1
+grep cidr custom-resources.yaml   # verify
+kubectl create -f custom-resources.yaml # Install the Calico custom resources
+watch kubectl get tigerastatus # After a few minutes, apiserver, calico, goldmane, ippools and whisker should all show AVAILABLE = True. Press Ctrl+C to exit.
 kubectl get pods -n calico-system
 kubectl get nodes
+### Troubleshooting
+Pods stuck in Pending or ContainerCreating: run 
+kubectl describe pod <name> -n calico-system 
+and 
+kubectl logs -n tigera-operator deploy/tigera-operator.
+Node still NotReady after pods are up: wait another minute or two, then check kubectl describe node controlplane.
+###
 # Generate command Join worker nodes. Will expire after 24 hours. If expired run again.
+
 sudo kubeadm token create --print-join-command  
 
 # Run on On worker nodes
