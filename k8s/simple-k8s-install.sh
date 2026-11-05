@@ -65,14 +65,14 @@ sudo hostnamectl set-hostname new-name
 ssh-copy-id username@new-name          # from client to server
 
 # install preliminary packages
-sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && /
+sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && \
 sudo apt install -y apt-transport-https ca-certificates curl gpg qemu-guest-agent gnupg lsb-release vim
 
 # Install Kubernetes
 # On all 3 nodes
 # Install containerd
-sudo apt install -y containerd; sudo mkdir -p /etc/containerd
-containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml
+sudo apt install -y containerd; sudo mkdir -p /etc/containerd && \
+containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml && \
 sudo systemctl restart containerd
 # Install kubeadm, kubelet and kubectl
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.37/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
