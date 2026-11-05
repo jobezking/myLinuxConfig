@@ -81,10 +81,11 @@ sudo apt update; sudo apt install -y kubelet kubeadm kubectl; sudo apt-mark hold
 #'#
 
 # Initialize only the main Control Plane Node. The advertised address comes from the primary interface from "ip addr" or "ip a"
-sudo kubeadm init --apiserver-advertise-address 192.168.1.161 --pod-network-cidr "10.244.0.0/16" --upload-certs
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo kubeadm init \
+  --apiserver-advertise-address $(ip route get 8.8.8.8 | grep -oP 'src \K\S+') \
+  --pod-network-cidr "10.244.0.0/16" \
+  --upload-certs
+mkdir -p $HOME/.kube; sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config; sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #To test: 
 kubectl get nodes
 # Add kubernetes networking. Choose between flannel or calico but not both
