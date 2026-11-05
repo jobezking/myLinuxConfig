@@ -133,3 +133,10 @@ helm repo update; helm install ingress-nginx ingress-nginx/ingress-nginx --names
 
 # storage class
 kubectl apply -f https://raw.githubusercontent.com/jobezking/myLinuxConfig/refs/heads/main/k8s/storageclass.yaml
+
+# Prometheus and Grafana monitoring
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts; helm repo update
+kubectl create namespace monitoring
+helm install kps prometheus-community/kube-prometheus-stack -n monitoring
+kubectl port-forward -n monitoring svc/kps-grafana 3000:80
+# Web UI:  http://localhost:3000  User: adminPassword: prom-operator
