@@ -138,5 +138,5 @@ kubectl apply -f https://raw.githubusercontent.com/jobezking/myLinuxConfig/refs/
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts; helm repo update
 kubectl create namespace monitoring
 helm install kps prometheus-community/kube-prometheus-stack -n monitoring
-kubectl port-forward -n monitoring svc/kps-grafana 3000:80
+kubectl port-forward --address 0.0.0.0 -n monitoring svc/kps-grafana 3000:80 > /dev/null 2>&1 &  # ps aux | grep port-forward; kill <PID>
 # Web UI:  http://localhost:3000  User: adminPassword: prom-operator
