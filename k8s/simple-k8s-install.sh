@@ -65,7 +65,7 @@ sudo hostnamectl set-hostname new-name
 ssh-copy-id username@new-name          # from client to server
 
 # install preliminary packages
-sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean
+sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && /
 sudo apt install -y apt-transport-https ca-certificates curl gpg qemu-guest-agent gnupg lsb-release vim
 
 # Install Kubernetes
