@@ -63,6 +63,7 @@ sudo sysctl --system
 #
 sudo hostnamectl set-hostname new-name
 ssh-copy-id username@new-name          # from client to server
+sudo visudo  # add username ALL=(ALL) NOPASSWD:ALL
 
 # install preliminary packages
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && \
