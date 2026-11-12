@@ -1,5 +1,7 @@
 # k8s-proxmox-vm-steps.sh should be followed first
 # k8s-haproxy-vm-steps.sh should be followed second
+sudo visudo  # add username ALL=(ALL) NOPASSWD:ALL
+sudo adduser k8s-admin; sudo usermod -aG sudo k8s-admin  # add at least one admin user that is not passworldless root. Use this user for all kubernetes commands. Do not use root.
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y
 sudo apt install -y ca-certificates curl gnupg lsb-release vim
 sudo mkdir -p -m 755 /etc/apt/keyrings 

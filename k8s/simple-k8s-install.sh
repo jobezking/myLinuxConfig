@@ -64,7 +64,7 @@ sudo sysctl --system
 sudo hostnamectl set-hostname new-name
 ssh-copy-id username@new-name          # from client to server
 sudo visudo  # add username ALL=(ALL) NOPASSWD:ALL
-
+sudo adduser k8s-admin; sudo usermod -aG sudo k8s-admin  # add at least one admin user that is not passworldless root. Use this user for all kubernetes commands. Do not use root.
 # install preliminary packages
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && \
 sudo apt install -y apt-transport-https ca-certificates curl gpg qemu-guest-agent gnupg lsb-release vim
