@@ -74,7 +74,7 @@ sudo apt install -y apt-transport-https ca-certificates curl gpg qemu-guest-agen
 # Install containerd
 sudo apt install -y containerd; sudo mkdir -p /etc/containerd && \
 containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml && \
-sudo systemctl restart containerd
+sudo systemctl restart containerd; sudo systemctl enable containerd
 # Install kubeadm, kubelet and kubectl
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.37/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg && \
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.37/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
