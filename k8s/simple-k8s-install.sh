@@ -39,10 +39,16 @@ upload and modify 50-cloud-init.yaml
 sudo mv /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
 sudo mv 50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml
 sudo netplan try
+sudo hostnamectl set-hostname new-name
+
+# Optional:Account setup if passwordless root is desired
+ssh-copy-id username@new-name          # from client to server
+sudo visudo  # k8s-admin ALL=(ALL) NOPASSWD:ALL
+# create a non-root user for kubernetes administration
+sudo adduser k8s-admin; sudo usermod -aG sudo k8s-admin
 
 # disable swap
-sudo swapoff -a
-sudo sed -i 's|^/swap\.img|#/swap.img|' /etc/fstab
+sudo swapoff -a; sudo sed -i 's|^/swap\.img|#/swap.img|' /etc/fstab
 
 # containerd prerequisites
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -60,11 +66,7 @@ EOF
 
 sudo sysctl --system
 
-#
-sudo hostnamectl set-hostname new-name
-ssh-copy-id username@new-name          # from client to server
-sudo visudo  # k8s-admin ALL=(ALL) NOPASSWD:ALL
-sudo adduser k8s-admin; sudo usermod -aG sudo k8s-admin  # add at least one admin user that is not passworldless root. Use this user for all kubernetes commands. Do not use root.
+
 # install preliminary packages
 sudo apt update; sudo apt upgrade -y; sudo apt dist-upgrade -y; sudo apt autoremove -y; sudo apt clean && \
 sudo apt install -y apt-transport-https ca-certificates curl gpg qemu-guest-agent gnupg lsb-release vim
