@@ -121,6 +121,15 @@ sudo kubeadm token create --print-join-command
 # Run on On worker nodes
 sudo kubeadm join 192.168.1.161:6443 --token <token> --discovery-token-ca-cert-hash sha256:<hash> from output above
 
+# ETCDCTL and ETCDUTL install
+ETCD_VERSION="v3.7.1"
+wget https://github.com/etcd-io/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz
+tar xzf etcd-${ETCD_VERSION}-linux-amd64.tar.gz
+sudo install -m 0755 etcd-${ETCD_VERSION}-linux-amd64/etcdctl /usr/local/bin/
+sudo install -m 0755 etcd-${ETCD_VERSION}-linux-amd64/etcdutl /usr/local/bin/
+etcdctl version
+etcdutl version
+
 # Add basics for kubernetes. Run on control plane node only
 # Add metrics server
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
