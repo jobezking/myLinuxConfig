@@ -97,10 +97,10 @@ kubectl get nodes
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 kubectl get nodes
 # add calico networking see https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises
-kubectl cluster-info dump | grep -m1 cluster-cidr  # get podCIDR from output for step 3
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/v3_projectcalico_org.yaml # Install the Calico CRDs
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/tigera-operator.yaml # Install the Tigera Operator
 curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/custom-resources.yaml
+kubectl cluster-info dump | grep -m1 cluster-cidr  # get podCIDR from output next command example cidr: 10.244.0.0/16
 sed -i 's|cidr: 192.168.0.0/16|cidr: 10.244.0.0/16|' custom-resources.yaml  # Edit the file to set the correct podCIDR from step 1
 grep cidr custom-resources.yaml   # verify
 kubectl create -f custom-resources.yaml # Install the Calico custom resources
